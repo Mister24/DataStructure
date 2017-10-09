@@ -1,5 +1,7 @@
 package linkList;
 
+import java.time.Period;
+
 /**
  * 单链表
  * 
@@ -78,9 +80,19 @@ public class LinkList {
 		Node previous = first;
 		
 		while (pos != index) {
-			
+			pos++;
+			previous = current;
+			current = current.next;
 		}
 		
+		//如果指定的index是第一个节点，需要特殊处理
+		//如果不是第一个节点，则用“指针”跳过这个节点，同时pos置0
+		if (current == first) {
+			first = first.next;
+		} else {
+			pos = 0;
+			previous.next = current.next;
+		}
 		return null;
 	}
 	
