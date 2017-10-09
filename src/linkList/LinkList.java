@@ -93,7 +93,7 @@ public class LinkList {
 			pos = 0;
 			previous.next = current.next;
 		}
-		return null;
+		return current;
 	}
 	
 }
