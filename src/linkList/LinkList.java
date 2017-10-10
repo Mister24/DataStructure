@@ -96,4 +96,25 @@ public class LinkList {
 		return current;
 	}
 	
+	public Node deleteByData(int data) {
+		
+		Node current = first;
+		Node previous = first;
+		while(current.data != data) {
+			if (current.next == null) {
+				return null;
+			}
+			previous = current;
+			current = current.next;
+		}
+		//如果删除的是头节点，需要特殊处理
+		if(current == first) {
+			first = first.next;
+		} else {
+			//“指针”跳过当前节点即可
+			previous.next = current.next;
+		}
+		return current;
+	}
+	
 }
