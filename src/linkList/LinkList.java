@@ -18,7 +18,7 @@ public class LinkList {
 	/**
 	 * 插入一个头结点
 	 * 
-	 * @param data 插入的节点的数值
+	 * @param data 待插入节点的数值
 	 * 
 	 * */
 	public void addFirstNode(int data) {
@@ -30,7 +30,7 @@ public class LinkList {
 	/**
 	 * 删除一个头结点
 	 * 
-	 * @return 删除的头结点
+	 * @return 待删除的结点
 	 * 
 	 * */
 	public Node deleteFirstNode() {
@@ -43,8 +43,8 @@ public class LinkList {
 	/**
 	 * 在index的后面插入一个节点
 	 * 
-	 * @param index  要在index之后插入
-	 * @param data   要插入的节点的数值
+	 * @param data 待插入节点的数值
+	 * @return     待插入的节点
 	 * 
 	 * */
 	public void add(int index, int data) {
@@ -73,6 +73,8 @@ public class LinkList {
 	/**
 	 * 删除任意位置的节点
 	 * 
+	 * @param index 待删除节点的位置
+	 * @return     待删除的节点
 	 * */
 	public Node deleteByPos(int index) {
 		
@@ -96,10 +98,18 @@ public class LinkList {
 		return current;
 	}
 	
+	/**
+	 * 根据节点的data删除节点（只删除第一个）
+	 * 
+	 * @param data 待删除节点的数值
+	 * @return     待删除的节点
+	 * 
+	 * */
 	public Node deleteByData(int data) {
 		
 		Node current = first;
 		Node previous = first;
+		
 		while(current.data != data) {
 			if (current.next == null) {
 				return null;
@@ -113,6 +123,65 @@ public class LinkList {
 		} else {
 			//“指针”跳过当前节点即可
 			previous.next = current.next;
+		}
+		return current;
+	}
+	
+	/**
+	 * 显示所有节点
+	 * 
+	 * */
+	public void displayAllNodes() {
+		
+		Node current = first;
+		
+		while (current != null) {
+			current.displayNode();
+			current = current.next;
+		}
+		System.out.println();
+	}
+	
+	/**
+	 * 根据位置查找节点
+	 * 
+	 * @param data 待删除节点的位置
+	 * @return     待删除的节点
+	 * 
+	 * */
+	public Node findByPos(int index) {
+		
+		Node current = first;
+		if(index < 0) {
+			return null;
+		} else {
+			while (pos != index) {
+				current = current.next;
+				pos++;
+			}
+		}
+		return current;
+	}
+	
+	
+	/**
+	 * 根据数据查找节点
+	 * 
+	 * @param data 待删除节点的数值
+	 * @return     待删除的节点
+	 * 
+	 * */
+	public Node findByData(int data) {
+		
+		Node current = first;
+		
+		while (current.data != data) {
+			if (current.next == null) {
+				return null;
+			}
+			else {
+				current = current.next;
+			}
 		}
 		return current;
 	}
