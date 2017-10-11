@@ -183,7 +183,39 @@ public class LinkList {
 				current = current.next;
 			}
 		}
+		
 		return current;
+	}
+	
+	/**
+	 * 判断链表是否有环
+	 * 
+	 * */
+	public boolean hasLoop(Node node) {
+		
+		Node node1 = first;
+		Node node2 = first.next;
+		
+		//node2作为结束的标志，如果node2为null，表示链表结束
+		while (node2 != null && node2.next != null) {
+			
+			//node1一次移动1个位置
+			//node2一次移动2个位置
+			node1 = node1.next;
+			node2 = node2.next.next;
+			
+			if (node2 == null) {
+				
+				return false;
+			}
+			
+			if (node1.data == node2.data) {
+				
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 }
