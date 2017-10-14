@@ -1,7 +1,5 @@
 package linkList;
 
-import java.time.Period;
-
 /**
  * 单链表
  * 
@@ -52,6 +50,7 @@ public class LinkList {
 		Node node = new Node(data);
 		Node current = first;
 		Node previous = first;
+		
 		//在相等之前，previous和pos在同一个位置
 		while(pos != index) {
 			previous = current;
@@ -190,6 +189,9 @@ public class LinkList {
 	/**
 	 * 判断链表是否有环
 	 * 
+	 * @param node 节点
+	 * @return     是否有环
+	 * 
 	 * */
 	public boolean hasLoop(Node node) {
 		
@@ -216,6 +218,42 @@ public class LinkList {
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * 翻转链表
+	 * 
+	 * */
+	public Node reverseLinkList() {
+		
+		//对于空链表，单元素链表，不执行
+		if (first == null || first.next == null) {
+			
+			return first;
+		}
+		
+		Node previous = first;
+		Node current = first.next;
+		Node temp;
+		
+		//这里只能处理到最后一个节点之前的，因为尾节点不符合判断条件
+		while (current != null && current.next != null) {
+			
+			temp = current.next;
+			current.next = previous;
+			
+			previous = current;
+			current = temp;
+		}
+		
+		//对最后一个节点单独处理，只需要将next指针指向前一个节点即可
+		current.next = previous;
+		
+		//将头节点设置为尾节点
+		first.next = null;
+		
+		//将头节点返回
+		return current;
 	}
 	
 }
