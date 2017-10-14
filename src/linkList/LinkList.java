@@ -221,10 +221,10 @@ public class LinkList {
 	}
 	
 	/**
-	 * 翻转链表
+	 * 翻转链表（遍历法）
 	 * 
 	 * */
-	public Node reverseLinkList() {
+	public Node reverseLinkList1() {
 		
 		//对于空链表，单元素链表，不执行
 		if (first == null || first.next == null) {
@@ -236,24 +236,38 @@ public class LinkList {
 		Node current = first.next;
 		Node temp;
 		
-		//这里只能处理到最后一个节点之前的，因为尾节点不符合判断条件
-		while (current != null && current.next != null) {
+		while (current != null) {
 			
 			temp = current.next;
 			current.next = previous;
 			
+			//指针后移
 			previous = current;
 			current = temp;
 		}
-		
-		//对最后一个节点单独处理，只需要将next指针指向前一个节点即可
-		current.next = previous;
 		
 		//将头节点设置为尾节点
 		first.next = null;
 		
 		//将头节点返回
-		return current;
+		return previous;
+	}
+	
+	/**
+	 * 翻转链表（递归法）
+	 * 
+	 * */
+	public Node reverseLinkList2(Node head) {
+		
+		if (first == null || first.next == null) {
+			
+			return first;
+		}
+		
+		Node reHead = reverseLinkList2(head.next);
+		head.next.next = head;
+		
+		return reHead;
 	}
 	
 }
