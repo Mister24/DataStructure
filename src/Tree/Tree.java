@@ -6,12 +6,14 @@ import java.util.List;
 public class Tree {
 	
 	private static class Node{
+		
 		Node leftChild;
 		Node rightChild;
 		int data;
 		
 		//定义Node的数据结构
 		Node(int data){
+			
 			leftChild = null;
 			rightChild = null;
 			this.data = data;
