@@ -1,7 +1,9 @@
 package greedyAlgorithm_change;
 
-import java.util.Scanner;
-
+/**
+ * 贪心算法（找零问题）
+ * 
+ * */
 public class Main {
 
 	public static void main(String[] args) {
@@ -24,6 +26,15 @@ public class Main {
 		
 	}
 	
+	/**
+	 * 计算所需各个面值的数量
+	 * 
+	 * @param kinds 货币面值的数组（从大到小排列）
+	 * @sum         要求找零的总量
+	 * 
+	 * @return      返回各个面值货币的数量
+	 * 
+	 * */
 	public static int[] count(int[] kinds, int sum) {
 		
 		int[] result = new int[kinds.length];
